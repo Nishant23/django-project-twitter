@@ -3,6 +3,7 @@ from .models import Tweet
 
 
 class TweetModelForm(forms.ModelForm):
+    content = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder': 'Your Tweet', 'class': 'form-control', 'rows':'3'}))
     class Meta:
         model = Tweet
         fields = ['content']

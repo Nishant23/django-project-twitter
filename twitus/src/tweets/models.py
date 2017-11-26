@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
-from .validators import * 
+from .validators import *
+from django.urls import reverse
 
 # def validate_content(value):
 #     content = value
@@ -20,6 +21,9 @@ class Tweet(models.Model):
 
     def __str__(self):
         return str(self.content)
+
+    def get_absolute_url(self):
+        return reverse("tweet:detail", kwargs={'pk':self.pk})
 
     # def clean(self, *args, **kwargs):
     #     content = self.content
